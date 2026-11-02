@@ -11,13 +11,15 @@ The repo is a learning log: small Jupyter notebooks, one per session, each build
 - **A layer of neurons**: several neurons sharing the same inputs, each with its own weights and bias.
 - **Refactoring with loops**: using `zip` to compute a whole layer without hard-coding every term.
 - **Vectorizing with NumPy**: replacing nested loops with `np.dot`, which is the idea behind efficient neural network math.
+- **Batches of inputs**: feeding many samples at once and why the weights matrix is transposed (`inputs · Wᵀ + biases`) so shapes line up.
+- **Stacking layers**: feeding one layer's outputs into the next to form a (still linear) multi-layer network.
 
 ## Sessions
 
 | Notebook | Topic | Key ideas |
 |---|---|---|
 | [session-1 (basic neurons impl)](<session-1(basic neurons impl).ipynb>) | Neurons in pure Python | Single neuron, extended inputs, layer of 3 neurons, loop-based layer |
-| [session-2 (basic neurons with numpy)](<session-2(basic neurons with numpy).ipynb>) | Same neurons, now with NumPy | Recaps session 1, then introduces `np.dot` for the neuron computation |
+| [session-2 (basic neurons with numpy)](<session-2(basic neurons with numpy).ipynb>) | Same neurons, now with NumPy | Recaps session 1, then `np.dot` for a neuron, batches of inputs with `weights.T`, and two chained layers |
 
 ### A taste of the code
 
@@ -34,7 +36,12 @@ for neuron_weights, bias in zip(weights, biases):
     layer_outputs.append(neuron_output)
 ```
 
-Later sessions swap the loops for NumPy, e.g. `np.dot(x, weights) + bias`.
+Session 2 swaps the loops for NumPy and handles a whole batch and two layers in a few lines:
+
+```python
+layer1_outputs = np.dot(inputs, weights.T) + biases
+layer2_outputs = np.dot(layer1_outputs, weights2.T) + biases2
+```
 
 ## Getting started
 
@@ -53,4 +60,4 @@ Anyone who wants to understand what happens inside a neural network before using
 
 ## Roadmap
 
-This is a work in progress. The natural next steps for the series are batches of inputs and matrix products, hidden layers, activation functions, loss, backpropagation, and optimizers.
+This is a work in progress. The natural next steps for the series are a reusable layer class, activation functions (without them stacked layers stay linear), loss, backpropagation, and optimizers.
