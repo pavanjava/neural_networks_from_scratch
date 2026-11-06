@@ -60,4 +60,4 @@ Anyone who wants to understand what happens inside a neural network before using
 
 ## Roadmap
 
-This is a work in progress. The natural next steps for the series are a reusable layer class, activation functions (without them stacked layers stay linear), loss, backpropagation, graduents and optimizers.
+This is a work in progress. The natural next steps for the series are a reusable layer class, activation functions (without them stacked layers stay linear), loss, backpropagation, gradients and optimizers.
