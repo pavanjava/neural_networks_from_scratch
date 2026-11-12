@@ -59,4 +59,5 @@ Dependencies (see [pyproject.toml](pyproject.toml)): `numpy` and `ipykernel`.
 Anyone who wants to understand what happens inside a neural network before using PyTorch or TensorFlow: students, engineers moving into ML, or anyone who learns best by building things themselves.
 
 ## Roadmap
+- TBD
 
